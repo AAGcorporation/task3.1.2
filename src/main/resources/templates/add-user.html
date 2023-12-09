@@ -1,0 +1,32 @@
+<form action="#"
+      th:action="@{/adduser}"
+      th:object="${user}"
+      method="post">
+
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="Age">
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+
+    <label for="age">Roles</label>
+    <input type="text" th:field="*{roles}" id="roles" placeholder="roles">
+    <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span>
+
+    <label for="age">Password</label>
+    <input type="text" th:field="*{password}" id="password" placeholder="password">
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+
+    <input type="submit" value="Add User">
+</form>
+<form th:action="@{/logout}" th:method="POST">
+
+    <input type="submit" value="Logout"/>
+</form>
+
