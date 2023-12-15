@@ -1,5 +1,5 @@
 <form action="#"
-      th:action="@{/adduser}"
+      th:action="@{/admin/adduser}"
       th:object="${user}"
       method="post">
 
@@ -15,8 +15,11 @@
     <input type="text" th:field="*{age}" id="age" placeholder="Age">
     <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
 
-    <label for="age">Roles</label>
-    <input type="text" th:field="*{roles}" id="roles" placeholder="roles">
+    <label for="roles">Roles</label>
+    <select th:field="*{roles}" id="roles" multiple="multiple">
+        <option th:each="role : ${roles}" th:value="${role.getId()}" th:text="${role.getRoleName()}"
+                th:selected="role"></option>
+    </select>
     <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span>
 
     <label for="age">Password</label>

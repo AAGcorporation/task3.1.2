@@ -1,5 +1,5 @@
 <form action="#"
-      th:action="@{/update/{id}(id=${user.id})}"
+      th:action="@{/admin/update/{id}(id=${user.id})}"
       th:object="${user}"
       method="post">
 
@@ -15,9 +15,12 @@
     <input type="text" th:field="*{age}" id="age" placeholder="Age">
     <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
 
-    <label for="age">Roles</label>
-    <input type="text" th:field="*{roles}" id="roles" placeholder="roles">
-    <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span>
+    <label for="roles">Roles</label>
+    <select th:field="*{roles}" id="roles" multiple="multiple">
+        <option th:each="role : ${roles}" th:value="${role.getId()}"
+                th:text="${role.getRoleName()}"
+                th:selected="role"></option>
+    </select>
 
     <label for="age">Password</label>
     <input type="text" th:field="*{password}" id="password" placeholder="password">
@@ -27,7 +30,6 @@
 
 </form>
 <form th:action="@{/logout}" th:method="POST">
-
     <input type="submit" value="Logout"/>
 </form>
 

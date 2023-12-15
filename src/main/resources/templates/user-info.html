@@ -17,8 +17,10 @@
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.age}"></td>
-                <td th:each="role : ${user.roles}" th:text="${role}"></td>
-                <td th:text="${user.password}"></td>
+            <tr th:each="role : ${users.roles}">
+                <td th:text="${role.getRoleName}"></td>
+            </tr>
+                <td th:text="${users.password}"></td>
             </tr>
             </tbody>
         </table>

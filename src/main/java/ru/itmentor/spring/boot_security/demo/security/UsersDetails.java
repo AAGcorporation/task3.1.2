@@ -24,7 +24,7 @@ public class UsersDetails implements UserDetails {
         for (Role role : user.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
         }
-        return authorities;
+        return user.getRoles();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class UsersDetails implements UserDetails {
         return true;
     }
 
-    public User getUser(){
+    public User getUser() {
         return this.user;
     }
 }

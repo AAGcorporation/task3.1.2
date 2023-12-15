@@ -18,7 +18,9 @@
         <td th:text="${user.name}"></td>
         <td th:text="${user.lastName}"></td>
         <td th:text="${user.age}"></td>
-        <td th:each="role : ${user.roles}" th:text="${role}"></td>
+        <td  th:each="role : ${user.roles}">
+          <span th:text="${role.roleName}"></span>
+        </td>
         <td th:text="${user.password}"></td>
         <td><a th:href="@{/admin/edit/{id}(id=${user.id})}">Edit</a></td>
         <td><a th:href="@{/admin/delete/{id}(id=${user.id})}">Delete</a></td>
@@ -32,4 +34,3 @@
     <input type="submit" value="Logout"/>
   </form>
 </div>
-
