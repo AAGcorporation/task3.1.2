@@ -2,6 +2,7 @@ package ru.itmentor.spring.boot_security.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.itmentor.spring.boot_security.demo.Repository.UserRepository;
 import ru.itmentor.spring.boot_security.demo.model.Role;
 import ru.itmentor.spring.boot_security.demo.model.User;
@@ -21,12 +22,14 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     @Override
     public User addUser(User user) {
         User savedUser = userRepository.saveAndFlush(user);
         return savedUser;
     }
 
+    @Transactional
     @Override
     public void delete(User user) {
         userRepository.deleteById(user.getId());
@@ -58,6 +61,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Transactional
     @Override
     public Set<Role> getRole(Set<String> rolesId) {
         Set<Role> roles = new HashSet<>();
